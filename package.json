@@ -1,0 +1,13 @@
+{
+  "name": "tingogtang",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Hanzi 2.0 — static web app for learning Chinese characters in Norwegian",
+  "scripts": {
+    "dev": "serve hanzi-web --listen tcp://0.0.0.0:3000 --no-clipboard",
+    "start": "serve hanzi-web --listen tcp://0.0.0.0:3000 --no-clipboard"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

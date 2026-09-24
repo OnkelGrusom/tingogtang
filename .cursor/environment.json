@@ -1,0 +1,16 @@
+{
+  "name": "Hanzi 2.0 web",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "dev-server",
+      "command": "npm run dev"
+    }
+  ],
+  "ports": [
+    {
+      "name": "Hanzi web",
+      "port": 3000
+    }
+  ]
+}
