@@ -1,6 +1,7 @@
 "use client";
 
 import { Minus, Plus, Save, Trash2 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -208,6 +209,12 @@ export function TransposeEditor() {
             >
               Ny sang
             </Button>
+            <Link
+              href="/karaoke"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg bg-secondary px-3 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+            >
+              Åpne karaoke-øving
+            </Link>
           </div>
         </div>
 

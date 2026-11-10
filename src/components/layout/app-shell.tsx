@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Library, Menu, Music2, Repeat2 } from "lucide-react";
+import { BookOpen, Library, Menu, Mic2, Music2, Repeat2 } from "lucide-react";
 import { useState } from "react";
 import {
   Sheet,
@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 
 const NAV = [
   { href: "/akkorder", label: "Akkorder", icon: Library },
+  { href: "/karaoke", label: "Karaoke", icon: Mic2 },
   { href: "/transponer", label: "Transponer sang", icon: Repeat2 },
   { href: "/tabs", label: "Tabs", icon: Music2 },
   { href: "/ovelser", label: "Øvelser", icon: BookOpen },

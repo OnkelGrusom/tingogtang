@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Library, Music2, Repeat2 } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Library,
+  Mic2,
+  Music2,
+  Repeat2,
+} from "lucide-react";
 
 const FEATURES = [
   {
@@ -7,6 +14,12 @@ const FEATURES = [
     title: "Akkordbibliotek",
     text: "Interaktive diagrammer, fingring og lyd for open, barre og power.",
     icon: Library,
+  },
+  {
+    href: "/karaoke",
+    title: "Karaoke-øving",
+    text: "Tekst og akkorder i tempo, med live grep-diagram og regulerbar BPM.",
+    icon: Mic2,
   },
   {
     href: "/transponer",
@@ -45,22 +58,23 @@ export default function HomePage() {
             <span className="block text-zinc-400">Rett i nettleseren.</span>
           </h1>
           <p className="mt-5 max-w-xl text-lg text-zinc-400 text-pretty">
-            Akkorder med fingring og lyd, sangtransponering, tabs og korte
-            leksjoner — laget for praktisk øving på mobil og desktop.
+            Akkorder med fingring og lyd, karaoke i tempo, sangtransponering,
+            tabs og korte leksjoner — laget for praktisk øving på mobil og
+            desktop.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              href="/akkorder"
+              href="/karaoke"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 text-sm font-medium text-zinc-950 transition-colors hover:bg-amber-400"
             >
-              Åpne akkorder
+              Prøv karaoke
               <ArrowRight className="size-4" />
             </Link>
             <Link
-              href="/ovelser"
+              href="/akkorder"
               className="inline-flex min-h-12 items-center justify-center rounded-lg border border-zinc-700 bg-transparent px-4 text-sm font-medium text-zinc-100 transition-colors hover:bg-zinc-900"
             >
-              Start øving
+              Akkordbibliotek
             </Link>
           </div>
         </div>
