@@ -42,8 +42,24 @@ export interface ChordGroup {
   symbol: string;
   name: string;
   quality: "major" | "minor" | "dominant7" | "minor7" | "other";
+  /** Open beginner-friendly chords (Em, Am, C, G, D, E, A, Dm) */
+  isBeginnerChord?: boolean;
+  /** Short tip for muted/buzzing strings — reserved for later drills */
+  troubleshootingTip?: string;
   variants: ChordVariant[];
 }
+
+/** Symbols treated as core beginner open chords */
+export const BEGINNER_CHORD_SYMBOLS = [
+  "Em",
+  "Am",
+  "C",
+  "G",
+  "D",
+  "E",
+  "A",
+  "Dm",
+] as const;
 
 export const STRING_NAMES = ["E", "A", "D", "G", "B", "e"] as const;
 export const STRING_LABELS_NO = [

@@ -19,7 +19,7 @@ const NOTE_OFFSETS: Record<string, number> = {
   B: 11,
 };
 
-function noteToFrequency(note: string): number {
+export function noteToFrequency(note: string): number {
   const match = note.match(/^([A-G][#b]?)(-?\d+)$/);
   if (!match) return 440;
   const [, name, octaveStr] = match;
