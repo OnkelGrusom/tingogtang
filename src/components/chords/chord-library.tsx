@@ -1,7 +1,7 @@
 "use client";
 
-import { Search, Star } from "lucide-react";
-import { useMemo, useState } from "react";
+import { GraduationCap, Search, Star } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { ChordCard } from "@/components/chords/chord-card";
 import { ChordDiagram } from "@/components/chords/chord-diagram";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +26,7 @@ export function ChordLibrary() {
     "all",
   );
   const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [beginnerOnly, setBeginnerOnly] = useState(false);
   const [selectedId, setSelectedId] = useState(
     CHORD_GROUPS[0]?.variants[0]?.id ?? "",
   );
@@ -34,7 +35,11 @@ export function ChordLibrary() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return CHORD_GROUPS.map((group) => {
+      if (beginnerOnly && !group.isBeginnerChord) {
+        return { ...group, variants: [] };
+      }
       const variants = group.variants.filter((v) => {
+        if (beginnerOnly && v.variant !== "open") return false;
         if (variantFilter !== "all" && v.variant !== variantFilter) return false;
         if (favoritesOnly && !favorites.includes(v.id)) return false;
         if (!q) return true;
@@ -46,7 +51,15 @@ export function ChordLibrary() {
       });
       return { ...group, variants };
     }).filter((g) => g.variants.length > 0);
-  }, [query, variantFilter, favoritesOnly, favorites]);
+  }, [query, variantFilter, favoritesOnly, favorites, beginnerOnly]);
+
+  // Keep selection valid when filter hides the current chord
+  useEffect(() => {
+    if (!filtered.some((g) => g.variants.some((v) => v.id === selectedId))) {
+      const first = filtered[0]?.variants[0];
+      if (first) setSelectedId(first.id);
+    }
+  }, [filtered, selectedId]);
 
   const selected = useMemo(() => {
     for (const group of CHORD_GROUPS) {
@@ -101,6 +114,24 @@ export function ChordLibrary() {
 
           <Button
             type="button"
+            variant={beginnerOnly ? "default" : "outline"}
+            size="lg"
+            className="min-h-11 gap-2"
+            onClick={() => {
+              setBeginnerOnly((v) => {
+                const next = !v;
+                if (next) setVariantFilter("all");
+                return next;
+              });
+            }}
+            aria-pressed={beginnerOnly}
+          >
+            <GraduationCap className="size-4" />
+            Nybegynner
+          </Button>
+
+          <Button
+            type="button"
             variant={favoritesOnly ? "default" : "outline"}
             size="lg"
             className="min-h-11 gap-2"
@@ -111,6 +142,13 @@ export function ChordLibrary() {
             Favoritter
           </Button>
         </div>
+
+        {beginnerOnly && (
+          <p className="text-sm text-muted-foreground">
+            Viser åpne nybegynnergrep: Em, Am, C, G, D, E, A og Dm. Barre og
+            power er skjult.
+          </p>
+        )}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)]">
@@ -122,12 +160,20 @@ export function ChordLibrary() {
           ) : (
             filtered.map((group) => (
               <section key={group.symbol} className="space-y-3">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <h2 className="font-heading text-lg font-semibold tracking-tight">
                     {group.symbol}
                   </h2>
                   <Badge variant="outline">{group.name}</Badge>
+                  {group.isBeginnerChord && (
+                    <Badge variant="secondary">Nybegynner</Badge>
+                  )}
                 </div>
+                {beginnerOnly && group.troubleshootingTip && (
+                  <p className="text-sm text-muted-foreground">
+                    {group.troubleshootingTip}
+                  </p>
+                )}
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
                   {group.variants.map((variant) => {
                     const active = selected?.variant.id === variant.id;

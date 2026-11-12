@@ -9,6 +9,8 @@ export const CHORD_GROUPS: ChordGroup[] = [
     symbol: "C",
     name: "C-dur",
     quality: "major",
+    isBeginnerChord: true,
+    troubleshootingTip: "Trykk hardt nok rett bak båndet — ikke midt på — så C-strengen ikke skurrer.",
     variants: [
       {
         id: "c-open",
@@ -62,6 +64,8 @@ export const CHORD_GROUPS: ChordGroup[] = [
     symbol: "G",
     name: "G-dur",
     quality: "major",
+    isBeginnerChord: true,
+    troubleshootingTip: "Hold 3. finger godt plantet på lav E; løft resten høyt så åpne strenger ringer.",
     variants: [
       {
         id: "g-open",
@@ -115,6 +119,8 @@ export const CHORD_GROUPS: ChordGroup[] = [
     symbol: "D",
     name: "D-dur",
     quality: "major",
+    isBeginnerChord: true,
+    troubleshootingTip: "Sjekk at 1. streng (høy e) ikke dempes av 3. finger.",
     variants: [
       {
         id: "d-open",
@@ -167,6 +173,8 @@ export const CHORD_GROUPS: ChordGroup[] = [
     symbol: "A",
     name: "A-dur",
     quality: "major",
+    isBeginnerChord: true,
+    troubleshootingTip: "Rull fingrene litt på høykant så B-strengen ikke blir dempet.",
     variants: [
       {
         id: "a-open",
@@ -220,6 +228,8 @@ export const CHORD_GROUPS: ChordGroup[] = [
     symbol: "E",
     name: "E-dur",
     quality: "major",
+    isBeginnerChord: true,
+    troubleshootingTip: "Tommel midt bak halsen — ikke over toppen — for ren E.",
     variants: [
       {
         id: "e-open",
@@ -272,6 +282,8 @@ export const CHORD_GROUPS: ChordGroup[] = [
     symbol: "Am",
     name: "A-moll",
     quality: "minor",
+    isBeginnerChord: true,
+    troubleshootingTip: "Hold 1. finger buet; den demper ofte B-strengen hvis den ligger flatt.",
     variants: [
       {
         id: "am-open",
@@ -311,6 +323,8 @@ export const CHORD_GROUPS: ChordGroup[] = [
     symbol: "Em",
     name: "E-moll",
     quality: "minor",
+    isBeginnerChord: true,
+    troubleshootingTip: "To fingre er nok. Slapp av i håndleddet og la åpne strenger synge.",
     variants: [
       {
         id: "em-open",
@@ -362,6 +376,8 @@ export const CHORD_GROUPS: ChordGroup[] = [
     symbol: "Dm",
     name: "D-moll",
     quality: "minor",
+    isBeginnerChord: true,
+    troubleshootingTip: "Pass på at 1. finger ikke legger seg over høy e.",
     variants: [
       {
         id: "dm-open",
